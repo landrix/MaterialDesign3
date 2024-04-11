@@ -60,7 +60,7 @@ implementation
 
 uses
   FMX.Styles, System.Math, FMX.Objects, FMX.Ani, FMX.StdCtrls,
-  FMX.Styles.Objects, FMX.Styles.Switch, FMX.Filter.Effects, System.UIConsts;
+  FMX.Styles.Objects, FMX.Styles.Switch, System.UIConsts;
 
 function MathRound(AValue: Extended): Int64; inline;
 begin
