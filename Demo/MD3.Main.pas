@@ -427,12 +427,6 @@ type
     Label30: TLabel;
     ComboTrackBar2: TComboTrackBar;
     MagnifierGlass1: TMagnifierGlass;
-    MagnifierGlass2: TMagnifierGlass;
-    Header1: THeader;
-    HeaderItem1: THeaderItem;
-    HeaderItem2: THeaderItem;
-    HeaderItem3: THeaderItem;
-    HeaderItem4: THeaderItem;
     TabItem15: TTabItem;
     MultiView2: TMultiView;
     Layout7: TLayout;
