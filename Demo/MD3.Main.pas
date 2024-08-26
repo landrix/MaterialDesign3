@@ -875,10 +875,9 @@ type
     DropTarget4: TDropTarget;
     DropTarget5: TDropTarget;
     VertScrollBox11: TVertScrollBox;
+    Switch1: TSwitch;
     procedure TrackBar2Tracking(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
-    procedure Button4Click(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure Button29Click(Sender: TObject);
     procedure DropTarget1DragOver(Sender: TObject; const Data: TDragObject; const Point: TPointF; var Operation: TDragOperation);
@@ -887,6 +886,7 @@ type
     procedure Timer1Timer(Sender: TObject);
     procedure CheckBox1Click(Sender: TObject);
     procedure CheckBox1Change(Sender: TObject);
+    procedure Switch1Switch(Sender: TObject);
   private
     FMDStyle3: TMaterialDesignStyle3;
   public
@@ -907,62 +907,6 @@ procedure TFormMain.Button29Click(Sender: TObject);
 begin
   AniIndicator4.Visible := False;
   AniIndicator4.Visible := True;
-end;
-
-procedure TFormMain.Button2Click(Sender: TObject);
-begin
-  var Style := TMaterialDesignStyle3.DefaultDarkPallete;
-  Style.ColorPrimary := ColorPanelPrimary.Color;
-  Style.ColorOnPrimary := ColorPanelOnPrimary.Color;
-  Style.ColorSecondaryContainer := ColorPanelSeconadry.Color;
-  Style.ColorSurface := ColorPanelSurface.Color;
-  Style.ColorOnSecondaryContainer := ColorPanelOnSecSurf.Color;
-  Style.ColorSurfaceContainer := ColorPanelOnSurfCont.Color;
-
-  Style.ColorPrimary008 := GetColorWithAlpha(Style.ColorPrimary, 8);
-  Style.ColorPrimary012 := GetColorWithAlpha(Style.ColorPrimary, 12);
-  Style.ColorOnSurface008 := GetColorWithAlpha(Style.ColorOnSurface, 12);
-  Style.ColorOnSurfaceVariant008 := GetColorWithAlpha(Style.ColorOnSurfaceVariant, 8);
-  Style.ColorOnSurfaceVariant012 := GetColorWithAlpha(Style.ColorOnSurfaceVariant, 12);
-  Style.ColorOnSecondaryContainer008 := GetColorWithAlpha(Style.ColorOnSecondaryContainer, 8);
-  Style.ColorSecondaryContainer000 := GetColorWithAlpha(Style.ColorSecondaryContainer, 0);
-
-  Style.ColorSurfaceContainerLow := ColorDarker(Style.ColorSurfaceContainer, 5);
-  Style.ColorSurfaceContainerHigh := ColorLighter(Style.ColorSurfaceContainer, 5);
-  Style.ColorSurfaceContainerHighest := ColorLighter(Style.ColorSurfaceContainer, 10);
-
-  FMDStyle3.ApplyStyle(Style);
-
-  Rectangle1.Fill.Color := StringToAlphaColor('#FF141218');
-  Rectangle2.Fill.Color := StringToAlphaColor('#FF2B2930');
-end;
-
-procedure TFormMain.Button4Click(Sender: TObject);
-begin
-  var Style := TMaterialDesignStyle3.DefaultLightPallete;
-  Style.ColorPrimary := ColorPanelPrimary.Color;
-  Style.ColorOnPrimary := ColorPanelOnPrimary.Color;
-  Style.ColorSecondaryContainer := ColorPanelSeconadry.Color;
-  Style.ColorSurface := ColorPanelSurface.Color;
-  Style.ColorOnSecondaryContainer := ColorPanelOnSecSurf.Color;
-  Style.ColorSurfaceContainer := ColorPanelOnSurfCont.Color;
-
-  Style.ColorPrimary008 := GetColorWithAlpha(Style.ColorPrimary, 8);
-  Style.ColorPrimary012 := GetColorWithAlpha(Style.ColorPrimary, 12);
-  Style.ColorOnSurface008 := GetColorWithAlpha(Style.ColorOnSurface, 12);
-  Style.ColorOnSurfaceVariant008 := GetColorWithAlpha(Style.ColorOnSurfaceVariant, 8);
-  Style.ColorOnSurfaceVariant012 := GetColorWithAlpha(Style.ColorOnSurfaceVariant, 12);
-  Style.ColorOnSecondaryContainer008 := GetColorWithAlpha(Style.ColorOnSecondaryContainer, 8);
-  Style.ColorSecondaryContainer000 := GetColorWithAlpha(Style.ColorSecondaryContainer, 0);
-
-  Style.ColorSurfaceContainerLow := ColorLighter(Style.ColorSurfaceContainer, 5);
-  Style.ColorSurfaceContainerHigh := ColorDarker(Style.ColorSurfaceContainer, 5);
-  Style.ColorSurfaceContainerHighest := ColorDarker(Style.ColorSurfaceContainer, 10);
-
-  FMDStyle3.ApplyStyle(Style);
-
-  Rectangle1.Fill.Color := StringToAlphaColor('#FFFFFFFF');
-  Rectangle2.Fill.Color := StringToAlphaColor('#FFECE6F0');
 end;
 
 procedure TFormMain.Button63Click(Sender: TObject);
@@ -1010,6 +954,65 @@ end;
 procedure TFormMain.FormDestroy(Sender: TObject);
 begin
   FMDStyle3.Free;
+end;
+
+procedure TFormMain.Switch1Switch(Sender: TObject);
+var
+  Style : TMaterialDesignStylePallete3;
+begin
+  if not Switch1.IsChecked then
+  begin
+    Style := TMaterialDesignStyle3.DefaultLightPallete;
+    Style.ColorPrimary := ColorPanelPrimary.Color;
+    Style.ColorOnPrimary := ColorPanelOnPrimary.Color;
+    Style.ColorSecondaryContainer := ColorPanelSeconadry.Color;
+    Style.ColorSurface := ColorPanelSurface.Color;
+    Style.ColorOnSecondaryContainer := ColorPanelOnSecSurf.Color;
+    Style.ColorSurfaceContainer := ColorPanelOnSurfCont.Color;
+
+    Style.ColorPrimary008 := GetColorWithAlpha(Style.ColorPrimary, 8);
+    Style.ColorPrimary012 := GetColorWithAlpha(Style.ColorPrimary, 12);
+    Style.ColorOnSurface008 := GetColorWithAlpha(Style.ColorOnSurface, 12);
+    Style.ColorOnSurfaceVariant008 := GetColorWithAlpha(Style.ColorOnSurfaceVariant, 8);
+    Style.ColorOnSurfaceVariant012 := GetColorWithAlpha(Style.ColorOnSurfaceVariant, 12);
+    Style.ColorOnSecondaryContainer008 := GetColorWithAlpha(Style.ColorOnSecondaryContainer, 8);
+    Style.ColorSecondaryContainer000 := GetColorWithAlpha(Style.ColorSecondaryContainer, 0);
+
+    Style.ColorSurfaceContainerLow := ColorLighter(Style.ColorSurfaceContainer, 5);
+    Style.ColorSurfaceContainerHigh := ColorDarker(Style.ColorSurfaceContainer, 5);
+    Style.ColorSurfaceContainerHighest := ColorDarker(Style.ColorSurfaceContainer, 10);
+
+    FMDStyle3.ApplyStyle(Style);
+
+    Rectangle1.Fill.Color := StringToAlphaColor('#FFFFFFFF');
+    Rectangle2.Fill.Color := StringToAlphaColor('#FFECE6F0');
+  end else
+  begin
+    Style := TMaterialDesignStyle3.DefaultDarkPallete;
+    Style.ColorPrimary := ColorPanelPrimary.Color;
+    Style.ColorOnPrimary := ColorPanelOnPrimary.Color;
+    Style.ColorSecondaryContainer := ColorPanelSeconadry.Color;
+    Style.ColorSurface := ColorPanelSurface.Color;
+    Style.ColorOnSecondaryContainer := ColorPanelOnSecSurf.Color;
+    Style.ColorSurfaceContainer := ColorPanelOnSurfCont.Color;
+
+    Style.ColorPrimary008 := GetColorWithAlpha(Style.ColorPrimary, 8);
+    Style.ColorPrimary012 := GetColorWithAlpha(Style.ColorPrimary, 12);
+    Style.ColorOnSurface008 := GetColorWithAlpha(Style.ColorOnSurface, 12);
+    Style.ColorOnSurfaceVariant008 := GetColorWithAlpha(Style.ColorOnSurfaceVariant, 8);
+    Style.ColorOnSurfaceVariant012 := GetColorWithAlpha(Style.ColorOnSurfaceVariant, 12);
+    Style.ColorOnSecondaryContainer008 := GetColorWithAlpha(Style.ColorOnSecondaryContainer, 8);
+    Style.ColorSecondaryContainer000 := GetColorWithAlpha(Style.ColorSecondaryContainer, 0);
+
+    Style.ColorSurfaceContainerLow := ColorDarker(Style.ColorSurfaceContainer, 5);
+    Style.ColorSurfaceContainerHigh := ColorLighter(Style.ColorSurfaceContainer, 5);
+    Style.ColorSurfaceContainerHighest := ColorLighter(Style.ColorSurfaceContainer, 10);
+
+    FMDStyle3.ApplyStyle(Style);
+
+    Rectangle1.Fill.Color := StringToAlphaColor('#FF141218');
+    Rectangle2.Fill.Color := StringToAlphaColor('#FF2B2930');
+  end;
 end;
 
 procedure TFormMain.Timer1Timer(Sender: TObject);
